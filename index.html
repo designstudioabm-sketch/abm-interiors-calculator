@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#8f3b2f">
+<title>ABM Interiors | Home Interior Budget Estimator</title>
+<style>
+:root{--mint:#f5e8e3;--mint2:#e4c6bd;--green:#8f3b2f;--deep:#67271f;--ink:#352521;--muted:#806e68;--white:#fff;--line:#ead8d2;--warn:#9a3b32}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fbf7f5 0,#fffdfc 340px,#fffdfc 100%);font-family:Inter,Arial,sans-serif;color:var(--ink);min-height:100vh;padding:24px 14px 42px}
+.wrap{max-width:760px;margin:0 auto}.brand{display:flex;align-items:center;gap:12px;margin:4px 0 20px}.mark{width:46px;height:46px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:800;letter-spacing:-1px}.brand strong{display:block;font-size:17px;letter-spacing:1.3px}.brand span{display:block;color:var(--muted);font-size:12px;margin-top:3px;letter-spacing:.4px}
+.card{background:var(--white);border:1px solid #ead8d2;border-radius:22px;box-shadow:0 16px 45px rgba(24,77,60,.08);overflow:hidden}.hero{padding:28px 28px 22px;background:linear-gradient(135deg,#f4e5e0,#fbf7f5)}.eyebrow{color:var(--green);font-size:11px;letter-spacing:1.8px;font-weight:800;text-transform:uppercase}.hero h1{font-size:clamp(27px,5vw,38px);line-height:1.12;margin:10px 0 10px;letter-spacing:-1px}.hero p{color:#6e514a;line-height:1.55;margin:0;max-width:570px;font-size:15px}
+.content{padding:26px 28px 30px}.step{font-size:12px;font-weight:800;letter-spacing:1.2px;color:var(--green);text-transform:uppercase;margin-bottom:10px}.field{margin:0 0 22px}.field label,.group-label{display:block;font-weight:750;font-size:14px;margin-bottom:10px}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.choice{position:relative}.choice input{position:absolute;opacity:0;pointer-events:none}.choice label{display:flex;align-items:center;justify-content:center;min-height:54px;border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;background:#fff;font-size:14px;font-weight:700;transition:.15s}.choice input:checked+label{background:#f6e9e5;border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green);color:var(--deep)}.choice input:focus-visible+label{outline:3px solid #c98b7d;outline-offset:2px}.tiers{grid-template-columns:repeat(3,minmax(0,1fr))}.tier label{display:block;min-height:92px;text-align:left;padding:14px}.tier strong{display:block;font-size:14px;margin-bottom:5px}.tier small{display:block;color:var(--muted);font-size:12px;line-height:1.4;font-weight:500}.inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px}.input-wrap label{display:block;font-size:13px;font-weight:750;margin-bottom:8px}.input-wrap input{width:100%;padding:14px;border:1px solid #dfcbc5;border-radius:11px;font:inherit;font-size:15px;outline:none}.input-wrap input:focus{border-color:var(--green);box-shadow:0 0 0 3px #f5e8e3}.hint{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.5}.btn{width:100%;border:0;border-radius:12px;background:var(--green);color:#fff;font-weight:800;font-size:15px;padding:16px;cursor:pointer;box-shadow:0 8px 18px #8f3b2f22}.btn:hover{background:var(--deep)}.btn:disabled{opacity:.65;cursor:wait}.error{display:none;color:var(--warn);font-size:13px;margin:12px 0 0;line-height:1.5}.result{display:none;margin-top:20px;padding:22px;border-radius:16px;background:#f6e9e5;border:1px solid #e4c6bd}.result .label{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--green);font-weight:800}.result .amount{font-size:clamp(32px,7vw,43px);font-weight:850;letter-spacing:-1px;color:var(--deep);margin:8px 0}.result p{margin:6px 0 0;line-height:1.5;color:#6e514a;font-size:13px}.fine{font-size:11px;color:#8b7771;text-align:center;line-height:1.5;margin:18px 0 0}.footer{text-align:center;color:#8b7771;font-size:12px;margin-top:18px}
+@media(max-width:520px){body{padding:12px 10px 30px}.hero{padding:23px 20px 19px}.content{padding:22px 20px 24px}.choices{grid-template-columns:repeat(2,minmax(0,1fr))}.tiers{grid-template-columns:1fr}.tier label{min-height:0}.inputs{grid-template-columns:1fr}.brand{margin-bottom:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand"><div class="mark">ABM</div><div><strong>ABM INTERIORS</strong><span>Thoughtful design. Beautiful living.</span></div></header>
+  <main class="card">
+    <section class="hero">
+      <div class="eyebrow">Home Interior Budget Estimator</div>
+      <h1>Plan your dream home<br>with a clearer budget.</h1>
+      <p>Choose your home size and finish preference to receive an indicative full-home interior budget from ABM Interiors, Varanasi.</p>
+    </section>
+    <section class="content">
+      <form id="estimateForm" novalidate>
+        <div class="step">01 — Your home</div>
+        <div class="field">
+          <span class="group-label">Select your home size</span>
+          <div class="choices" role="radiogroup" aria-label="Home size">
+            <div class="choice"><input type="radio" id="bhk1" name="bhk" value="1" checked><label for="bhk1">1 BHK</label></div>
+            <div class="choice"><input type="radio" id="bhk2" name="bhk" value="2"><label for="bhk2">2 BHK</label></div>
+            <div class="choice"><input type="radio" id="bhk3" name="bhk" value="3"><label for="bhk3">3 BHK</label></div>
+            <div class="choice"><input type="radio" id="bhk4" name="bhk" value="4plus"><label for="bhk4">4+ BHK</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <span class="group-label">Choose your preferred finish</span>
+          <div class="choices tiers" role="radiogroup" aria-label="Finish preference">
+            <div class="choice tier"><input type="radio" id="budget" name="tier" value="budget" checked><label for="budget"><strong>Budget</strong><small>Essential, value-focused choices</small></label></div>
+            <div class="choice tier"><input type="radio" id="mid" name="tier" value="mid"><label for="mid"><strong>Mid-range</strong><small>Balanced style and materials</small></label></div>
+            <div class="choice tier"><input type="radio" id="premium" name="tier" value="premium"><label for="premium"><strong>Premium</strong><small>Elevated finishes and detailing</small></label></div>
+          </div>
+        </div>
+        <div class="step">02 — Where can we send your estimate?</div>
+        <div class="field">
+          <div class="inputs">
+            <div class="input-wrap"><label for="name">Your name *</label><input id="name" name="name" autocomplete="name" maxlength="80" placeholder="Enter your name" required></div>
+            <div class="input-wrap"><label for="phone">Mobile number *</label><input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10-digit mobile number" required></div>
+          </div>
+          <p class="hint">Your estimated budget will be shown after your details are validated and your enquiry is submitted successfully.</p>
+        </div>
+        <button class="btn" id="submitBtn" type="submit">Calculate My Interior Budget</button>
+        <p class="error" id="error" role="alert"></p>
+      </form>
+      <section class="result" id="result" aria-live="polite">
+        <div class="label">Your indicative budget</div>
+        <div class="amount" id="amount">—</div>
+        <p id="resultText"></p>
+        <p>Final costing depends on site measurements, selected materials, design details and the agreed scope of work. ABM Interiors will confirm the detailed estimate after discussion.</p>
+      </section>
+      <p class="fine">Your details are used to respond to your interior enquiry. This is an indicative estimate, not a final quotation.</p>
+    </section>
+  </main>
+  <div class="footer">ABM Interiors · Varanasi</div>
+</div>
+<script>
+const form = document.getElementById('estimateForm');
+const btn = document.getElementById('submitBtn');
+const errorBox = document.getElementById('error');
+const result = document.getElementById('result');
+const phoneInput = document.getElementById('phone');
+phoneInput.addEventListener('input', () => { phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0,10); });
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  errorBox.style.display = 'none';
+  result.style.display = 'none';
+  const name = document.getElementById('name').value.trim();
+  const phone = phoneInput.value.trim();
+  const bhk = form.querySelector('input[name="bhk"]:checked')?.value;
+  const tier = form.querySelector('input[name="tier"]:checked')?.value;
+  if (name.length < 2) return showError('Please enter your name.');
+  if (!/^[6-9]\d{9}$/.test(phone)) return showError('Please enter a valid 10-digit Indian mobile number.');
+  btn.disabled = true; btn.textContent = 'Submitting your details…';
+  try {
+    const response = await fetch('/api/estimate', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({name, phone, bhk, tier, source:'ABM Interiors Price Estimator'})
+    });
+    const data = await response.json().catch(() => ({}));
+    if (response.status === 404) throw new Error('Calculator service is not available yet. Please try again in a moment.');
+    if (!response.ok || !data.success) throw new Error(data.error || 'We could not submit your enquiry. Please try again.');
+    document.getElementById('amount').textContent = data.estimate;
+    document.getElementById('resultText').textContent = `Estimated for ${bhk === '4plus' ? '4+ BHK' : bhk + ' BHK'} · ${tier === 'mid' ? 'Mid-range' : tier.charAt(0).toUpperCase()+tier.slice(1)} finish.`;
+    result.style.display = 'block';
+    result.scrollIntoView({behavior:'smooth',block:'nearest'});
+    btn.textContent = 'Estimate Generated';
+  } catch (err) {
+    showError(err.message || 'Something went wrong. Please try again.');
+    btn.disabled = false; btn.textContent = 'Calculate My Interior Budget';
+  }
+});
+function showError(message) { errorBox.textContent = message; errorBox.style.display = 'block'; }
+</script>
+</body>
+</html>
