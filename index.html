@@ -109,6 +109,7 @@ form.addEventListener('submit', async (event) => {
     if (response.status === 404) throw new Error('Calculator service is not available yet. Please try again in a moment.');
     if (!response.ok || !data.success) throw new Error(data.error || 'We could not submit your enquiry. Please try again.');
     document.getElementById('amount').textContent = data.estimate;
+    fbq('track', 'Lead');
     document.getElementById('resultText').textContent = `Estimated for ${bhk === '4plus' ? '4+ BHK' : bhk + ' BHK'} · ${tier === 'mid' ? 'Mid-range' : tier.charAt(0).toUpperCase()+tier.slice(1)} finish.`;
     result.style.display = 'block';
     result.scrollIntoView({behavior:'smooth',block:'nearest'});
